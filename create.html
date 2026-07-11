@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Composez votre capsule souvenir Linkora.">
+  <title>Créer ma capsule — Linkora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="creator.css">
+</head>
+<body class="creator-body">
+  <header class="creator-header">
+    <a class="brand" href="index.html">LINKORA</a>
+    <div class="save-state" id="save-state"><span></span> Enregistré sur cet appareil</div>
+    <button class="outline-action" id="preview-button">Prévisualiser</button>
+  </header>
+
+  <main class="creator-shell">
+    <aside class="creator-sidebar">
+      <p class="eyebrow">Votre capsule</p>
+      <nav aria-label="Étapes de création">
+        <button class="step-link active" data-step="1"><span>1</span><div><strong>L’intention</strong><small>Le début de votre histoire</small></div></button>
+        <button class="step-link" data-step="2"><span>2</span><div><strong>Vos souvenirs</strong><small>Photos, vidéo et voix</small></div></button>
+        <button class="step-link" data-step="3"><span>3</span><div><strong>La mise en scène</strong><small>Couleurs et présentation</small></div></button>
+        <button class="step-link" data-step="4"><span>4</span><div><strong>La révélation</strong><small>Préparer le premier geste</small></div></button>
+      </nav>
+      <div class="local-note"><strong>Prototype privé et gratuit</strong><p>Vos contenus restent uniquement dans ce navigateur. Rien n’est envoyé sur Internet.</p></div>
+    </aside>
+
+    <section class="creator-workspace">
+      <form id="capsule-form">
+        <section class="form-step active" data-panel="1">
+          <p class="eyebrow">01 · L’intention</p>
+          <h1>À qui racontez-vous<br><em>cette histoire ?</em></h1>
+          <p class="lead">Quelques mots suffisent pour donner une âme à votre capsule.</p>
+          <div class="field-grid">
+            <label class="field"><span>Titre de la capsule</span><input id="title" maxlength="70" value="Pour toi, toujours." placeholder="Pour toi, toujours."></label>
+            <label class="field"><span>Votre relation</span><select id="occasion"><option>Couple</option><option>Mariage</option><option>Naissance</option><option>Famille</option><option>Anniversaire</option><option>Hommage</option><option>Autre histoire</option></select></label>
+          </div>
+          <label class="field"><span>Message d’ouverture</span><textarea id="intro" maxlength="400" rows="5" placeholder="Écrivez les premiers mots que la personne découvrira…">Il y a des rencontres qui changent tout. Voici quelques-uns des moments qui ont écrit notre histoire.</textarea><small><b id="intro-count">117</b>/400</small></label>
+          <button type="button" class="button dark next" data-next="2">Continuer avec mes souvenirs</button>
+        </section>
+
+        <section class="form-step" data-panel="2">
+          <p class="eyebrow">02 · Vos souvenirs</p>
+          <h1>Ajoutez les moments<br><em>qui comptent.</em></h1>
+          <p class="lead">Vous pouvez commencer avec une seule photo. Votre capsule pourra évoluer plus tard.</p>
+          <div class="upload-grid">
+            <label class="upload-card"><input type="file" id="photo-input" accept="image/*" multiple><span class="upload-icon">＋</span><strong>Ajouter des photos</strong><small>JPG, PNG ou WebP</small></label>
+            <label class="upload-card"><input type="file" id="video-input" accept="video/*"><span class="upload-icon">▷</span><strong>Ajouter une vidéo</strong><small>Une vidéo courte</small></label>
+            <label class="upload-card"><input type="file" id="audio-input" accept="audio/*"><span class="upload-icon">◉</span><strong>Ajouter une voix</strong><small>MP3, M4A ou WAV</small></label>
+          </div>
+          <div class="media-list" id="media-list"><div class="empty-media"><span>◇</span><p>Vos premiers souvenirs apparaîtront ici.</p></div></div>
+          <p class="usage"><span><b id="usage-value">0</b> Mo utilisés</span><span>Limite du prototype : 50 Mo</span></p>
+          <div class="form-actions"><button type="button" class="back-link" data-back="1">Retour</button><button type="button" class="button dark next" data-next="3">Choisir la présentation</button></div>
+        </section>
+
+        <section class="form-step" data-panel="3">
+          <p class="eyebrow">03 · La mise en scène</p>
+          <h1>Choisissez l’atmosphère<br><em>de votre histoire.</em></h1>
+          <div class="theme-grid">
+            <label class="theme-option selected"><input type="radio" name="theme" value="ivoire" checked><span class="theme-preview theme-ivory">Aa</span><strong>Ivoire</strong><small>Doux et intemporel</small></label>
+            <label class="theme-option"><input type="radio" name="theme" value="nuit"><span class="theme-preview theme-night">Aa</span><strong>Nuit</strong><small>Intime et profond</small></label>
+            <label class="theme-option"><input type="radio" name="theme" value="rose"><span class="theme-preview theme-rose">Aa</span><strong>Rosée</strong><small>Tendre et lumineux</small></label>
+          </div>
+          <label class="field"><span>Signature</span><input id="signature" maxlength="80" placeholder="Camille, avec tout mon amour"></label>
+          <div class="form-actions"><button type="button" class="back-link" data-back="2">Retour</button><button type="button" class="button dark next" data-next="4">Préparer la révélation</button></div>
+        </section>
+
+        <section class="form-step" data-panel="4">
+          <p class="eyebrow">04 · La révélation</p>
+          <h1>Votre histoire est<br><em>prête à être découverte.</em></h1>
+          <div class="reveal-card"><span class="reveal-mark">L</span><div><small>Adresse de démonstration</small><p id="capsule-url">linkora.fr/s/mon-histoire</p></div><button type="button" id="copy-link">Copier</button></div>
+          <p class="lead">Dans ce prototype gratuit, cette adresse est une simulation. La capsule et ses médias restent sur cet appareil.</p>
+          <div class="check-list"><p><span>✓</span> Capsule enregistrée dans votre navigateur</p><p><span>✓</span> Médias consultables hors ligne sur cet appareil</p><p><span>✓</span> Aucun abonnement et aucune donnée envoyée</p></div>
+          <div class="form-actions"><button type="button" class="back-link" data-back="3">Retour</button><button type="button" class="button dark" id="final-preview">Découvrir ma capsule</button></div>
+        </section>
+      </form>
+    </section>
+  </main>
+
+  <dialog id="capsule-preview" class="capsule-preview-dialog">
+    <button class="preview-close" aria-label="Fermer">×</button>
+    <article class="full-preview theme-ivoire" id="full-preview">
+      <header><span>Une histoire Linkora</span><button type="button">♡</button></header>
+      <section class="preview-hero"><p id="preview-occasion">Couple</p><h2 id="preview-title">Pour toi, toujours.</h2><div class="preview-rule"></div><p id="preview-intro">Il y a des rencontres qui changent tout.</p></section>
+      <section class="preview-memories" id="preview-memories"><p class="preview-empty">Ajoutez une photo, une vidéo ou une voix pour donner vie à cette histoire.</p></section>
+      <footer><p id="preview-signature"></p><small>Cette histoire est privée.</small></footer>
+    </article>
+  </dialog>
+  <script src="creator.js"></script>
+</body>
+</html>
