@@ -1,0 +1,8 @@
+Fichiers de la nouvelle maquette d'accueil Linkora.
+
+Sur GitHub, ouvrez le dépôt linkora-demo puis choisissez Add file > Upload files.
+Déposez le CONTENU de ce dossier, en conservant le dossier assets.
+Validez ensuite avec Commit changes.
+
+Le lien public sera :
+https://vinyrapha.github.io/linkora-demo/

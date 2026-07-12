@@ -3,73 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Linkora transforme vos objets précieux en portes vers les histoires qui comptent.">
-  <title>Linkora — Un objet. Toute une histoire.</title>
+  <meta name="description" content="Linkora crée des objets précieux qui révèlent les histoires et les souvenirs qui comptent.">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>Linkora — Un objet précieux. Une histoire à transmettre.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="announcement">Livraison offerte dès 75 € · Capsule privée incluse</div>
-  <header class="header">
-    <a class="brand" href="#top" aria-label="Linkora, accueil">LINKORA</a>
-    <nav class="desktop-nav" aria-label="Navigation principale">
-      <a href="#collection">Boutique</a><a href="#occasions">Occasions</a><a href="#mariage">Mariage</a><a href="#capsule">Créer une capsule</a><a href="#how">Comment ça marche</a>
+  <div class="page-intro" aria-hidden="true"><span>LINKORA</span></div>
+
+  <div class="announcement">Livraison offerte dès 75 € <i></i> Votre histoire personnelle incluse</div>
+  <header class="site-header" data-header>
+    <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle>
+      <span></span><span></span>
+    </button>
+    <a class="wordmark" href="#top" aria-label="Linkora, accueil">LINKORA</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="#boutique">Boutique</a>
+      <a href="#occasions">Occasions</a>
+      <a href="#experience">Comment ça marche</a>
+      <a href="#journal">Journal</a>
     </nav>
-    <div class="header-actions"><button class="icon-button" aria-label="Rechercher">⌕</button><button class="icon-button" aria-label="Mon espace">♡</button><button class="icon-button" aria-label="Panier">Sac <span>0</span></button><button class="menu-button" aria-label="Ouvrir le menu">Menu</button></div>
+    <div class="header-tools">
+      <button type="button" aria-label="Rechercher" data-search>Recherche</button>
+      <a href="#espace">Mon espace</a>
+      <button type="button" aria-label="Voir le panier">Panier <sup>0</sup></button>
+    </div>
   </header>
+
+  <aside class="mobile-menu" aria-hidden="true" data-menu>
+    <nav aria-label="Navigation mobile">
+      <a href="#boutique"><span>01</span>Boutique</a>
+      <a href="#occasions"><span>02</span>Occasions</a>
+      <a href="#experience"><span>03</span>Comment ça marche</a>
+      <a href="#journal"><span>04</span>Journal</a>
+      <a href="#espace"><span>05</span>Mon espace</a>
+    </nav>
+    <p>Un objet précieux.<br>Une histoire à transmettre.</p>
+  </aside>
+
   <main id="top">
-    <section class="hero">
-      <img src="./hero-voile-concept.png" alt="Une mariée découvre le souvenir secret brodé dans son voile">
-      <div class="hero-copy">
-        <p class="eyebrow">Un souvenir secret, tout près de vous</p>
-        <h1>Un objet.<br><em>Toute une histoire.</em></h1>
-        <p>Photos, voix, vidéos et mots précieux réunis dans une capsule privée, révélée d’un simple geste.</p>
-        <div class="button-row"><a class="button primary" href="create.html">Créer gratuitement une capsule</a><button class="text-button" data-open-demo>Voir une histoire <span>↗</span></button></div>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media"><img src="./assets/linkora-hero-editorial.png" alt="Une femme découvre une histoire offerte dans un écrin Linkora"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="kicker reveal">Objets porteurs d’histoires</p>
+        <h1 id="hero-title" class="reveal">Ce que vous offrez<br><em>reste avec eux.</em></h1>
+        <p class="hero-intro reveal">Un bijou, un écrin, une histoire composée par vous. Des images, une voix et des mots précieux, révélés dans un geste naturel.</p>
+        <div class="hero-actions reveal">
+          <a class="cta cta-dark" href="#boutique">Découvrir la collection</a>
+          <button class="link-arrow" type="button" data-story-open>Voir l’expérience <span>↗</span></button>
+        </div>
       </div>
-      <div class="hero-note"><span>01</span><p>Approchez votre téléphone.<br>Votre histoire s’ouvre.</p></div>
+      <div class="hero-index"><span>Maison Linkora</span><b></b><span>Édition 2026</span></div>
+      <a class="scroll-cue" href="#manifesto"><span>Découvrir</span><i></i></a>
     </section>
 
-    <section class="manifesto section-pad">
-      <p class="eyebrow">La maison Linkora</p>
-      <h2>Nous ne conservons pas des fichiers.<br>Nous gardons vivants <em>les moments qui comptent.</em></h2>
-      <p class="manifesto-body">Un mot que l’on n’oublie pas. Une voix que l’on veut entendre encore. Un instant de vie à transmettre. Chaque objet Linkora ouvre un écrin intime, composé par vous.</p>
+    <section class="manifesto section" id="manifesto">
+      <p class="kicker reveal">Notre conviction</p>
+      <h2 class="display reveal">Les plus beaux cadeaux ne se mesurent pas à ce qu’ils contiennent, mais à <em>ce qu’ils font ressentir.</em></h2>
+      <p class="body-copy reveal">Linkora transforme un objet choisi avec soin en passage vers une histoire personnelle. Une attention intime, conçue pour être offerte, découverte et transmise.</p>
+      <a class="text-link reveal" href="#pourquoi">Pourquoi Linkora <span>↗</span></a>
     </section>
 
-    <section class="collection section-pad" id="collection">
-      <div class="section-heading"><div><p class="eyebrow">Première collection</p><h2>À garder près de soi</h2></div><a href="#">Voir tous les objets <span>↗</span></a></div>
-      <div class="product-grid">
-        <article class="product-card"><div class="product-visual visual-medallion"><span class="medallion"></span><span class="chain"></span><span class="badge">Bientôt</span></div><div class="product-info"><div><h3>Le Médaillon</h3><p>Votre histoire, portée près du cœur</p></div><strong>69 €</strong></div></article>
-        <article class="product-card"><div class="product-visual visual-bracelet"><span class="bracelet"></span><span class="bead"></span></div><div class="product-info"><div><h3>Le Bracelet</h3><p>Un lien qui raconte le vôtre</p></div><strong>59 €</strong></div></article>
-        <article class="product-card"><div class="product-visual visual-box"><span class="box"></span><span class="ribbon"></span></div><div class="product-info"><div><h3>Le Coffret</h3><p>Prêt à offrir, prêt à émouvoir</p></div><strong>89 €</strong></div></article>
+    <section class="shop section" id="boutique">
+      <div class="section-head reveal">
+        <div><p class="kicker">La sélection Linkora</p><h2 class="display">Choisir l’objet.</h2></div>
+        <a class="text-link" href="#">Toute la boutique <span>↗</span></a>
+      </div>
+      <div class="category-grid">
+        <a class="category-card category-jewel reveal" href="#">
+          <div class="jewel-art"><i class="jewel-chain"></i><i class="jewel-stone">L</i></div>
+          <div class="category-copy"><span>01</span><h3>Bijoux</h3><p>À garder près de soi</p><b>Explorer</b></div>
+        </a>
+        <a class="category-card category-key reveal" href="#">
+          <div class="key-art"><i></i><b>L</b></div>
+          <div class="category-copy"><span>02</span><h3>Porte-clés</h3><p>Un lien au quotidien</p><b>Explorer</b></div>
+        </a>
+        <a class="category-card category-gift reveal" href="#">
+          <div class="gift-art"><i></i><b></b></div>
+          <div class="category-copy"><span>03</span><h3>Cadeaux & coffrets</h3><p>Prêts à offrir, prêts à émouvoir</p><b>Explorer</b></div>
+        </a>
       </div>
     </section>
 
-    <section class="wedding" id="mariage">
-      <div class="wedding-image"><img src="./hero-voile-concept.png" alt="Broderie florale délicate sur un voile de mariée"></div>
-      <div class="wedding-copy"><p class="eyebrow">La signature mariage</p><h2>Le souvenir secret<br><em>cousu dans votre voile</em></h2><p>Sous une broderie délicate repose l’histoire de cette journée : vos vœux, la voix de vos proches, les images que vous garderez toute une vie.</p><ul><li>Invisible et délicat</li><li>Capsule mariage privée incluse</li><li>Enrichissable après le grand jour</li></ul><p class="price">Intégration à partir de <strong>49 €</strong></p><a class="button dark" href="#capsule">Découvrir Le Souvenir Secret</a></div>
+    <section class="experience" id="experience">
+      <div class="experience-visual reveal"><img src="./hero-voile-concept.png" alt="Un voile délicatement brodé, porteur d’une histoire personnelle"><span>Le souvenir secret</span></div>
+      <div class="experience-copy">
+        <p class="kicker reveal">Une émotion, simplement</p>
+        <h2 class="display reveal">Vous préparez<br><em>l’histoire.</em><br>Nous créons<br><em>la surprise.</em></h2>
+        <div class="experience-steps">
+          <article class="reveal"><span>01</span><div><h3>Choisissez votre objet</h3><p>Un bijou ou un cadeau pensé pour porter ce qui vous relie.</p></div></article>
+          <article class="reveal"><span>02</span><div><h3>Composez votre histoire</h3><p>Réunissez vos photos, votre voix et les mots que vous souhaitez transmettre.</p></div></article>
+          <article class="reveal"><span>03</span><div><h3>Offrez l’instant</h3><p>À la découverte du cadeau, votre histoire apparaît immédiatement.</p></div></article>
+        </div>
+        <button class="link-arrow reveal" type="button" data-story-open>Découvrir l’expérience <span>↗</span></button>
+      </div>
     </section>
 
-    <section class="how section-pad" id="how">
-      <div class="section-heading"><div><p class="eyebrow">Naturellement simple</p><h2>Votre histoire en trois gestes</h2></div></div>
-      <div class="steps"><article><span>01</span><div class="step-icon">◇</div><h3>Choisissez votre objet</h3><p>Un bijou, un voile ou un coffret pensé pour accompagner un moment précieux.</p></article><article><span>02</span><div class="step-icon">✦</div><h3>Composez votre histoire</h3><p>Ajoutez vos photos, vos vidéos, votre voix et les mots que vous voulez transmettre.</p></article><article><span>03</span><div class="step-icon">⌁</div><h3>Offrez l’émotion</h3><p>Approchez simplement un téléphone. La capsule s’ouvre, sans application à télécharger.</p></article></div>
+    <section class="occasions section" id="occasions">
+      <div class="section-head reveal">
+        <div><p class="kicker">Pour chaque lien</p><h2 class="display">À qui pensez-vous ?</h2></div>
+        <p class="section-note">Trouvez l’inspiration selon la personne<br>ou le moment que vous souhaitez célébrer.</p>
+      </div>
+      <div class="occasion-list">
+        <a href="#" class="reveal"><small>01</small><span>Demande en mariage</span><em>Une question. Toute une vie.</em><b>↗</b></a>
+        <a href="#" class="reveal"><small>02</small><span>Noël</span><em>Offrir les moments de l’année.</em><b>↗</b></a>
+        <a href="#" class="reveal"><small>03</small><span>Pour maman</span><em>Tout ce que les mots seuls ne disent pas.</em><b>↗</b></a>
+        <a href="#" class="reveal"><small>04</small><span>Famille & grands-parents</span><em>Une histoire à transmettre.</em><b>↗</b></a>
+        <a href="#" class="reveal"><small>05</small><span>Mariage</span><em>Le souvenir du grand jour.</em><b>↗</b></a>
+      </div>
+      <a class="cta cta-outline reveal" href="#">Voir toutes les occasions</a>
     </section>
 
-    <section class="capsule" id="capsule">
-      <div class="capsule-copy"><p class="eyebrow light">Votre capsule privée</p><h2>Plus qu’un album,<br><em>une histoire à ressentir.</em></h2><p>Construisez un récit qui vous ressemble, chapitre après chapitre. Chaque capsule peut évoluer avec vous.</p><a class="button cream" href="create.html">Créer ma capsule</a></div>
-      <div class="phone-wrap"><div class="phone"><div class="phone-top"></div><div class="story-cover"><p>Pour toi, toujours.</p><small>Camille & Lucas · Depuis 2019</small></div><div class="story-content"><span>Notre histoire</span><div class="story-photo"></div><p>Il y a des rencontres qui changent tout...</p><button>Écouter mon message <b>▶</b></button></div></div></div>
+    <section class="two-paths">
+      <div class="paths-intro reveal"><p class="kicker">À vous de choisir</p><h2 class="display">Deux façons<br><em>d’offrir une histoire.</em></h2></div>
+      <article class="path path-light reveal"><span>01</span><h3>Je prépare la surprise</h3><p>Composez l’histoire en ligne. Nous préparons, vérifions et refermons l’écrin. Le cadeau arrive prêt à émouvoir.</p><a class="text-link" href="#">Découvrir ce parcours <b>↗</b></a></article>
+      <article class="path path-dark reveal"><span>02</span><h3>La personne la créera</h3><p>Offrez l’objet vierge de toute histoire. La personne qui le reçoit pourra y déposer elle-même ses souvenirs.</p><a class="text-link light" href="#">Découvrir ce parcours <b>↗</b></a></article>
     </section>
 
-    <section class="occasions section-pad" id="occasions"><p class="eyebrow">Pour chaque histoire</p><h2>Il existe un moment à garder.</h2><div class="occasion-list"><a href="#">Couple <span>01</span></a><a href="#">Mariage <span>02</span></a><a href="#">Naissance <span>03</span></a><a href="#">Famille <span>04</span></a><a href="#">Anniversaire <span>05</span></a></div></section>
+    <section class="why section" id="pourquoi">
+      <div class="why-mark reveal">L</div>
+      <div class="why-copy">
+        <p class="kicker reveal">Pourquoi Linkora ?</p>
+        <h2 class="display reveal">Parce qu’un objet prend de la valeur lorsqu’il porte <em>une part de nous.</em></h2>
+        <p class="body-copy reveal">Nous imaginons des présents qui dépassent leur matière. Personnels sans être compliqués, intimes sans être figés, ils donnent une place aux voix, aux visages et aux histoires que l’on veut garder proches.</p>
+        <a class="cta cta-dark reveal" href="#">Découvrir la maison</a>
+      </div>
+    </section>
 
-    <section class="trust"><p>Privée par défaut</p><span>·</span><p>Modifiable à tout moment</p><span>·</span><p>Sans application</p><span>·</span><p>Exportable</p></section>
+    <section class="journal section" id="journal">
+      <div class="section-head reveal"><div><p class="kicker">Le journal</p><h2 class="display">Histoires à offrir.</h2></div><a class="text-link" href="#">Tout le journal <span>↗</span></a></div>
+      <div class="journal-grid">
+        <article class="reveal"><div class="editorial editorial-one"></div><p>Inspirations</p><h3>Comment trouver les mots pour une demande en mariage ?</h3><a href="#">Lire l’histoire</a></article>
+        <article class="reveal"><div class="editorial editorial-two"></div><p>Transmission</p><h3>Les souvenirs que les grands-parents nous laissent</h3><a href="#">Lire l’histoire</a></article>
+      </div>
+    </section>
+
+    <section class="newsletter" id="espace">
+      <p class="kicker reveal">Le cercle Linkora</p>
+      <h2 class="display reveal">Recevez nos histoires,<br><em>rarement, mais justement.</em></h2>
+      <form class="reveal" onsubmit="return false"><label><span>Votre adresse email</span><input type="email" placeholder="vous@exemple.fr"></label><button type="submit">S’inscrire <span>↗</span></button></form>
+      <small>Aucune profusion. Seulement nos nouveautés et inspirations les plus précieuses.</small>
+    </section>
   </main>
-  <footer><div><a class="brand footer-brand" href="#top">LINKORA</a><p>Des objets qui gardent une histoire.</p></div><div><h4>Découvrir</h4><a href="#collection">La boutique</a><a href="#mariage">Mariage</a><a href="#capsule">La capsule</a></div><div><h4>Vous accompagner</h4><a href="#how">Comment ça marche</a><a href="#">Confidentialité</a><a href="#">Questions fréquentes</a></div><div><h4>Recevoir nos histoires</h4><form><input type="email" placeholder="Votre adresse email" aria-label="Votre adresse email"><button aria-label="S'inscrire">→</button></form></div></footer>
 
-  <dialog class="demo" id="demo"><button class="close" aria-label="Fermer">×</button><p class="eyebrow">Démonstration</p><h2>Pour toi, toujours.</h2><p class="demo-intro">Une capsule imaginée pour raconter six années d’une histoire.</p><div class="demo-memory"><span>12 juin 2019</span><h3>Le jour où tout a commencé</h3><p>« Je ne savais pas encore que ce café durerait toute une vie. »</p></div><div class="audio"><button>▶</button><div><p>Un message de Camille</p><span></span></div><time>0:42</time></div><button class="button dark close-bottom">Refermer l’histoire</button></dialog>
+  <footer class="footer">
+    <div class="footer-brand"><a class="wordmark" href="#top">LINKORA</a><p>Un objet précieux.<br>Une histoire à transmettre.</p></div>
+    <div><h4>Découvrir</h4><a href="#boutique">Boutique</a><a href="#occasions">Occasions</a><a href="#experience">Comment ça marche</a><a href="#pourquoi">Pourquoi Linkora</a></div>
+    <div><h4>La maison</h4><a href="#">À propos</a><a href="#journal">Journal</a><a href="#">Contact</a><a href="#">Questions fréquentes</a></div>
+    <div><h4>Informations</h4><a href="#">Livraison & retours</a><a href="#">Confidentialité</a><a href="#">Conditions générales</a><a href="#">Mentions légales</a></div>
+    <div class="footer-bottom"><span>© 2026 Linkora</span><span>France</span></div>
+  </footer>
+
+  <dialog class="story-dialog" data-story-dialog>
+    <button class="dialog-close" type="button" aria-label="Fermer" data-story-close>Fermer ×</button>
+    <div class="story-preview">
+      <p class="kicker">Une histoire offerte</p>
+      <h2>Pour toi,<br><em>toujours.</em></h2>
+      <p>« Il y a des rencontres qui changent la couleur de tout ce qui vient après. »</p>
+      <div class="memory-card"><span>Chapitre 01</span><h3>Le jour où tout a commencé</h3><i></i><button type="button">▶ Écouter le message</button></div>
+      <small>Une démonstration de l’expérience Linkora</small>
+    </div>
+  </dialog>
+
+  <div class="search-panel" aria-hidden="true" data-search-panel><button type="button" data-search-close>Fermer ×</button><p>Que recherchez-vous ?</p><input type="search" placeholder="Un cadeau pour maman, Noël…" aria-label="Rechercher"><div><span>Suggestions</span><a href="#">Demande en mariage</a><a href="#">Cadeaux de Noël</a><a href="#">Pour les grands-parents</a></div></div>
   <script src="script.js"></script>
 </body>
 </html>
-
-
