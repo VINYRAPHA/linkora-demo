@@ -1,6 +1,12 @@
 const MAX_BYTES = 50 * 1024 * 1024;
 let media = [];
 let currentStep = 1;
+let cloudCapsule = null;
+const cloud = window.supabase.createClient(
+  window.LINKORA_SUPABASE.url,
+  window.LINKORA_SUPABASE.publishableKey,
+  { auth: { persistSession: true, autoRefreshToken: true } }
+);
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -40,6 +46,74 @@ function showStep(step) {
 }
 
 function totalBytes() { return media.reduce((sum, item) => sum + item.file.size, 0); }
+
+async function ensureCloudUser() {
+  const { data: sessionData } = await cloud.auth.getSession();
+  if (sessionData.session?.user) return sessionData.session.user;
+  const { data, error } = await cloud.auth.signInAnonymously();
+  if (error) throw error;
+  return data.user;
+}
+
+function safeFileName(name) {
+  return name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9._-]/g, '-').toLowerCase();
+}
+
+async function publishCapsule() {
+  const status = $('#publish-status');
+  const button = $('#publish-button');
+  status.className = 'publish-status';
+  status.textContent = 'Préparation de votre capsule…';
+  button.disabled = true;
+  button.textContent = 'Enregistrement…';
+  try {
+    const user = await ensureCloudUser();
+    const values = {
+      owner_id: user.id,
+      title: $('#title').value || 'Une histoire à raconter',
+      occasion: $('#occasion').value,
+      intro: $('#intro').value,
+      signature: $('#signature').value,
+      theme: $('input[name="theme"]:checked').value,
+      published: true
+    };
+    const storedId = localStorage.getItem('linkora-cloud-capsule-id');
+    let result;
+    if (storedId) {
+      result = await cloud.from('capsules').update(values).eq('id', storedId).select().single();
+      if (result.error) localStorage.removeItem('linkora-cloud-capsule-id');
+    }
+    if (!result || result.error) result = await cloud.from('capsules').insert(values).select().single();
+    if (result.error) throw result.error;
+    cloudCapsule = result.data;
+    localStorage.setItem('linkora-cloud-capsule-id', cloudCapsule.id);
+
+    const pending = media.filter((item) => !item.cloudPath);
+    for (let index = 0; index < pending.length; index += 1) {
+      const item = pending[index];
+      status.textContent = `Envoi du souvenir ${index + 1} sur ${pending.length}…`;
+      const path = `${user.id}/${cloudCapsule.id}/${crypto.randomUUID()}-${safeFileName(item.file.name)}`;
+      const upload = await cloud.storage.from('capsule-media').upload(path, item.file, { upsert: false });
+      if (upload.error) throw upload.error;
+      const metadata = await cloud.from('capsule_media').insert({ capsule_id: cloudCapsule.id, owner_id: user.id, kind: item.kind, storage_path: path, file_name: item.file.name, sort_order: media.indexOf(item) });
+      if (metadata.error) throw metadata.error;
+      item.cloudPath = path;
+    }
+
+    const publicUrl = `${window.location.href.replace(/create\.html.*$/, '')}capsule.html?slug=${cloudCapsule.slug}`;
+    $('#capsule-url').textContent = publicUrl;
+    status.className = 'publish-status success';
+    status.textContent = 'Votre capsule est enregistrée. Son adresse a été copiée.';
+    button.textContent = 'Capsule enregistrée';
+    button.disabled = false;
+    await navigator.clipboard.writeText(publicUrl).catch(() => {});
+  } catch (error) {
+    status.className = 'publish-status error';
+    status.textContent = `Impossible d’enregistrer : ${error.message || 'erreur inconnue'}`;
+    button.textContent = 'Réessayer';
+    button.disabled = false;
+  }
+}
 
 function addFiles(files, kind) {
   const additions = [...files].map((file) => ({ id: crypto.randomUUID(), file, kind, url: URL.createObjectURL(file) }));
@@ -116,6 +190,7 @@ $('#video-input').addEventListener('change', (event) => addFiles(event.target.fi
 $('#audio-input').addEventListener('change', (event) => addFiles(event.target.files, 'audio'));
 $('#preview-button').addEventListener('click', renderPreview);
 $('#final-preview').addEventListener('click', renderPreview);
+$('#publish-button').addEventListener('click', publishCapsule);
 $('.preview-close').addEventListener('click', () => $('#capsule-preview').close());
 $('#copy-link').addEventListener('click', async () => {
   await navigator.clipboard.writeText($('#capsule-url').textContent);

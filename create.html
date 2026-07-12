@@ -10,6 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="creator.css">
+  <link rel="stylesheet" href="cloud.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
 </head>
 <body class="creator-body">
   <header class="creator-header">
@@ -76,7 +79,9 @@
           <div class="reveal-card"><span class="reveal-mark">L</span><div><small>Adresse de démonstration</small><p id="capsule-url">linkora.fr/s/mon-histoire</p></div><button type="button" id="copy-link">Copier</button></div>
           <p class="lead">Dans ce prototype gratuit, cette adresse est une simulation. La capsule et ses médias restent sur cet appareil.</p>
           <div class="check-list"><p><span>✓</span> Capsule enregistrée dans votre navigateur</p><p><span>✓</span> Médias consultables hors ligne sur cet appareil</p><p><span>✓</span> Aucun abonnement et aucune donnée envoyée</p></div>
-          <div class="form-actions"><button type="button" class="back-link" data-back="3">Retour</button><button type="button" class="button dark" id="final-preview">Découvrir ma capsule</button></div>
+          <div class="publish-status" id="publish-status" role="status"></div>
+          <div class="form-actions"><button type="button" class="back-link" data-back="3">Retour</button><button type="button" class="button dark" id="publish-button">Enregistrer en ligne</button></div>
+          <button type="button" class="preview-after-publish" id="final-preview">Prévisualiser avant d’enregistrer</button>
         </section>
       </form>
     </section>
